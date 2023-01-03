@@ -1,6 +1,6 @@
 ## Kemnaker Project ( React Native )
 
-- [Figma](https://www.figma.com/file/5Np9I71Vcs7NwgsGwr6Hge/Studi-Case%3A-Kemnaker-Rev-1?node-id=1%3A2&t=HKXVGAEhNF49Jkf7-0){:target="\_blank" rel="noopener"}
+<a href="https://www.figma.com/file/5Np9I71Vcs7NwgsGwr6Hge/Studi-Case%3A-Kemnaker-Rev-1?node-id=1%3A2&t=HKXVGAEhNF49Jkf7-0" target="_blank" rel="noopener">Figma</a>
 
 Project Require
 
