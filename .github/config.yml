@@ -1,0 +1,4 @@
+kramdown:
+  input: Kramdown
+todo:
+  keyword: "@makeAnIssue"
