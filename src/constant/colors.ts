@@ -9,7 +9,7 @@ type ColorVariantMapped<K extends string> = {
 };
 
 const primary: ColorTheme = {
-  main: "",
+  main: "#15406A",
 };
 
 const secondary = {
@@ -19,8 +19,10 @@ const neutral = {
   main: "#000000",
 };
 
-export default {
+const COLORS: ColorVariantMapped<ColorVariant> = {
   primary,
   secondary,
   neutral,
-} as ColorVariantMapped<ColorVariant>;
+};
+
+export default COLORS;
