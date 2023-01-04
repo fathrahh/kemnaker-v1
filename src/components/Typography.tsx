@@ -1,14 +1,11 @@
 import React from "react";
 import { Text, TextProps } from "react-native";
-
-type TypographyVariant =
-  | "RalewayBold"
-  | "RalewayRegular"
-  | "RobotoBold"
-  | "RobotoRegular";
+import colors, { ColorVariant } from "../constant/colors";
+import { TypographyVariant } from "../constant/font";
 
 interface TypographyProps extends TextProps {
   variant?: TypographyVariant;
+  color?: ColorVariant;
 }
 
 /**
@@ -19,15 +16,17 @@ interface TypographyProps extends TextProps {
 export default function Typography({
   children,
   variant = "RalewayRegular",
-  color,
+  color = "primary",
   style,
   ...other
 }: TypographyProps) {
+  const usedColor = colors[color].main;
+
   return (
     <Text
       style={[
         {
-          color: "black",
+          color: usedColor,
           fontFamily: variant,
         },
         style,

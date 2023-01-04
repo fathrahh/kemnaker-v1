@@ -2,7 +2,6 @@ import { useRef } from "react";
 
 import { Button, DrawerLayoutAndroid, StyleSheet, View } from "react-native";
 import Typography from "../components/Typography";
-import fonts from "../constant/font";
 
 export default function Example() {
   const drawer = useRef(null);
@@ -23,7 +22,20 @@ export default function Example() {
       renderNavigationView={navigationView}
     >
       <View style={styles.container}>
-        <Typography variant="RalewayBold">I'm I Drawers!</Typography>
+        <Typography
+          style={{
+            fontSize: 24,
+            marginBottom: 10,
+            textShadowOffset: {
+              height: 8,
+              width: 8,
+            },
+          }}
+          color="primary"
+          variant="RalewayBold"
+        >
+          I'm I Drawers!
+        </Typography>
         <Button
           onPress={() => drawer.current.openDrawer()}
           title="Open Drawer"
