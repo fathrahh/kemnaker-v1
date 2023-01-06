@@ -1,10 +1,17 @@
-import { Button, View } from "react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { View } from "react-native";
 import { PresentationSvg } from "../assets/illustrations";
+import Button from "../components/Button";
 import Typography from "../components/Typography";
 import COLORS from "../constant/colors";
 import OnBoardingLayout from "../layouts/OnBoardingLayout";
+import { RootStackParamList } from "../routes/NavigationType";
 
-export default function OnBoardingScreen({ navigation }) {
+interface Props {
+  navigation: NativeStackNavigationProp<RootStackParamList, "OnBoarding">;
+}
+
+export default function OnBoardingScreen({ navigation }: Props) {
   return (
     <OnBoardingLayout>
       <View
@@ -35,9 +42,12 @@ export default function OnBoardingScreen({ navigation }) {
           pelatihan terpercaya!
         </Typography>
         <Button
-          onPress={() => navigation.navigate("Splash")}
-          title="Go to onboarding"
-        />
+          onPress={() => {
+            navigation.navigate("Component");
+          }}
+        >
+          Masuk
+        </Button>
       </View>
     </OnBoardingLayout>
   );

@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = function (api) {
   api.cache(true);
   return {
@@ -8,8 +6,10 @@ module.exports = function (api) {
       [
         "module-resolver",
         {
+          root: ["./src"],
+          extensions: [".ios.js", ".android.js", ".js", ".ts", ".tsx", ".json"],
           alias: {
-            src: path.join(__dirname, "src"),
+            src: "./src",
           },
         },
       ],
