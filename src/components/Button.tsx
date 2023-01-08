@@ -1,6 +1,11 @@
-import { useTheme } from "@react-navigation/native";
-import { View, StyleSheet } from "react-native";
-import { RectButton, BaseButton } from "react-native-gesture-handler";
+import { Theme, useTheme } from "@react-navigation/native";
+import {
+  StyleSheet,
+  StyleProp,
+  Pressable,
+  PressableProps,
+  ViewStyle,
+} from "react-native";
 
 import COLORS, { ColorVariant } from "../constant/colors";
 import { TypographyVariant } from "../constant/font";
@@ -8,47 +13,46 @@ import Typography from "./Typography";
 
 type ButtonVariant = "contained" | "outlined";
 
-interface Props {
+interface Props extends PressableProps {
   textVariant?: TypographyVariant;
-  children: React.ReactNode;
   variant?: ButtonVariant;
+  style?: StyleProp<ViewStyle>;
+  onPressStyle?: StyleProp<ViewStyle>;
+  children: React.ReactNode;
   btnColor?: ColorVariant;
-  onPress: () => void;
 }
 
 export default function Button({
   textVariant,
   children,
+  style,
+  onPressStyle,
   variant,
-  onPress,
   btnColor,
+  ...other
 }: Props) {
   const theme = useTheme();
 
   const backgroundColor =
     variant === "contained" ? COLORS[btnColor].main : "white";
-  const borderColor = variant === "contained" ? COLORS[btnColor].main : "red";
-  const color = variant === "contained" ? theme.colors.card : theme.colors.text;
+  const borderColor =
+    variant === "contained" ? COLORS[btnColor].main : "#8A8A8A";
+  const color = variant === "contained" ? theme.colors.card : "#8A8A8A";
 
   return (
-    <View
-      style={[
+    <Pressable
+      style={({ pressed }) => [
         styles.rootStyle,
-        {
-          borderColor: "#000000",
-          backgroundColor,
-        },
+        { backgroundColor, borderColor },
+        style,
+        pressed && onPressStyle,
       ]}
+      {...other}
     >
-      <BaseButton {...onPress}>
-        <Typography
-          style={[styles.buttonText, { color }]}
-          variant={textVariant}
-        >
-          {children}
-        </Typography>
-      </BaseButton>
-    </View>
+      <Typography style={[styles.buttonText, { color }]} variant={textVariant}>
+        {children}
+      </Typography>
+    </Pressable>
   );
 }
 

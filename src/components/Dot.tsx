@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Animated, {
   interpolate,
   useInterpolateConfig,
@@ -14,15 +14,15 @@ const styles = StyleSheet.create({
 });
 
 interface DotProps {
-  backgroundColor: string;
-  opacity: number;
+  backgroundColor?: string;
+  opacity?: number;
 }
 
 export default function Dot({ backgroundColor, opacity }: DotProps) {
   // const backgroundColor = interpolate()
 
   return (
-    <Animated.View
+    <View
       style={[
         styles.dot,
         {
@@ -35,5 +35,6 @@ export default function Dot({ backgroundColor, opacity }: DotProps) {
 }
 
 Dot.defaultProps = {
+  backgroundColor: COLORS.primary,
   opacity: 1,
 };
