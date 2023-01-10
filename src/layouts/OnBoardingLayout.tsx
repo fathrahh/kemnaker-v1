@@ -1,12 +1,19 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import {
+  StyleSheet,
+  KeyboardAvoidingView,
+  View,
+  Dimensions,
+} from "react-native";
 import COLORS from "../constant/colors";
 
-interface IProps {
+interface Props {
   children: React.ReactNode;
 }
 
-export default function OnBoardingLayout({ children }: IProps) {
+const { height } = Dimensions.get("window");
+
+export default function OnBoardingLayout({ children }: Props) {
   return (
     <View style={styles.container}>
       <View
@@ -26,16 +33,16 @@ export default function OnBoardingLayout({ children }: IProps) {
       <View
         style={[
           styles.shape,
-          styles.bottomLeft,
           {
             width: SHAPE_WIDTH * 2,
             borderRadius: SHAPE_WIDTH,
+            top: height - SHAPE_WIDTH * 2,
+            left: 0,
             transform: [
               { translateX: -SHAPE_WIDTH },
               { translateY: (SHAPE_WIDTH * 5) / 4 },
             ],
           },
-          ,
         ]}
       />
     </View>
@@ -62,9 +69,5 @@ const styles = StyleSheet.create({
   topRight: {
     top: 0,
     right: 0,
-  },
-  bottomLeft: {
-    bottom: 0,
-    left: 0,
   },
 });

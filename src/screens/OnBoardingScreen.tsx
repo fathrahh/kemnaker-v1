@@ -1,13 +1,14 @@
 import { View, Dimensions } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
+
 import { PresentationSvg } from "../assets/illustrations";
 import Button from "../components/Button";
 import Typography from "../components/Typography";
 import COLORS from "../constant/colors";
 import OnBoardingLayout from "../layouts/OnBoardingLayout";
-import { RootStackParamList } from "../routes/NavigationType";
+import { RootStackParamList } from "../navigations/NavigationType";
 import Dot from "../components/Dot";
-import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 

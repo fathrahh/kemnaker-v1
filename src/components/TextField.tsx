@@ -31,9 +31,9 @@ export default function TextField({
   const [secureText, setSecureText] = useState(true);
 
   const renderEyeIcon = secureText ? (
-    <EyeIconOpen onPress={() => setSecureText(false)} />
-  ) : (
     <EyeIconClose onPress={() => setSecureText(false)} />
+  ) : (
+    <EyeIconOpen onPress={() => setSecureText(true)} />
   );
 
   return (

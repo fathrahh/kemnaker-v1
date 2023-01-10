@@ -10,7 +10,7 @@ import Button from "../components/Button";
 
 import Gap from "../components/Gap";
 import Typography from "../components/Typography";
-import { RootStackParamList } from "../routes/NavigationType";
+import { RootStackParamList } from "../navigations/NavigationType";
 
 interface Props {
   navigation: NativeStackNavigationProp<RootStackParamList, "Component">;
