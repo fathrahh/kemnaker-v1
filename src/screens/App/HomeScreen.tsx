@@ -11,6 +11,7 @@ import SearchBar from "../../components/SearchBar";
 import { FilterIcon, NotificationIcon } from "../../assets/icons";
 import JobsSection from "../../section/HomeScreen/JobsSection";
 import PopularCourses from "../../section/HomeScreen/PopularCourses";
+import PopularJobOffers from "../../section/HomeScreen/PopularJobOffers";
 
 export default function HomeScreen() {
   const [userName, setUserName] = useState("");
@@ -77,9 +78,7 @@ export default function HomeScreen() {
           </View>
           <JobsSection />
           <PopularCourses />
-          <PopularCourses />
-          <PopularCourses />
-          <PopularCourses />
+          <PopularJobOffers />
         </View>
       </ScrollView>
     </SafeAreaStatusBar>

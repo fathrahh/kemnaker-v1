@@ -30,7 +30,10 @@ export default function FontConfig({ children }: IFontConfig) {
   }
 
   return (
-    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+    <View
+      style={{ flex: 1, backgroundColor: "#FFFFFF" }}
+      onLayout={onLayoutRootView}
+    >
       {children}
     </View>
   );

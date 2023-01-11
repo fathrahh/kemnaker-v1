@@ -4,9 +4,8 @@ export type RootStackParamList = {
   Login: undefined;
   App: undefined;
   Component: undefined;
-  CourseDetail: {
-    id: string;
-  };
+  AllCourse: undefined;
+  AllJobOffer: undefined;
 };
 
 export type AppButtonTabsParamList = {

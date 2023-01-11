@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Image, View, StyleProp, ViewStyle } from "react-native";
 import StarIcon from "../../assets/icons/StarIcon";
 import Typography from "../../components/Typography";
+import { numberToCurrency } from "../../utils/numberFormater";
 
 interface Props {
   imgSource?: any;
@@ -19,11 +20,21 @@ export default function TrainingCardPost({
   return (
     <View style={[styles.container, styleContainer]}>
       <Image source={imgSource} />
-      <Typography style={styles.title} variant="RalewayBold">
+      <Typography
+        numberOfLines={1}
+        ellipsizeMode={"tail"}
+        style={styles.title}
+        variant="RalewayBold"
+      >
         {title}
       </Typography>
       <View style={styles.subContainer}>
-        <Typography variant="RobotoRegular" style={styles.author}>
+        <Typography
+          numberOfLines={1}
+          ellipsizeMode={"tail"}
+          variant="RobotoRegular"
+          style={styles.author}
+        >
           Online oleh <Typography variant="RobotoBold">Feb Academy</Typography>
         </Typography>
         <View style={styles.rating}>
@@ -32,8 +43,20 @@ export default function TrainingCardPost({
             .map((_, idx) => (
               <StarIcon key={idx} fill={idx + 1 > rating && "#8A8A8A"} />
             ))}
+          <Typography
+            variant="RobotoBold"
+            style={{
+              fontSize: 7,
+              marginLeft: 3,
+            }}
+          >
+            {rating.toFixed(1)}
+          </Typography>
         </View>
       </View>
+      <Typography variant="RobotoBold" style={{ fontSize: 12 }}>
+        {numberToCurrency({ number: 10000, prefix: "Rp", toFixed: 2 })}
+      </Typography>
     </View>
   );
 }
@@ -48,12 +71,12 @@ const styles = StyleSheet.create({
   },
   title: {
     textTransform: "capitalize",
-    fontSize: 12,
+    fontSize: 14,
     marginTop: 8,
   },
   subContainer: {
     flexDirection: "row",
-    marginTop: 5,
+    marginVertical: 4,
     justifyContent: "space-between",
     alignItems: "center",
   },
@@ -63,5 +86,6 @@ const styles = StyleSheet.create({
   },
   rating: {
     flexDirection: "row",
+    alignItems: "center",
   },
 });

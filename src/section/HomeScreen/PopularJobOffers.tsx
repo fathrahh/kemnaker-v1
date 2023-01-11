@@ -3,13 +3,13 @@ import { JobOfferImage } from "../../assets/illustrations";
 import TrainingCardPost from "./TrainingCardPost";
 import HomeCarouselLayout from "../../layouts/HomeCarouselLayout";
 
-export default function PopularCourses() {
+export default function PopularJobOffers() {
   return (
     <HomeCarouselLayout
-      title="Pelatihan Terpopuler"
       to={{
-        screen: "AllCourse",
+        screen: "AllJobOffer",
       }}
+      title={"Lowongan Kerja Terpopuler"}
     >
       {Array(8)
         .fill(null)
