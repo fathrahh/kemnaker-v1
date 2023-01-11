@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   Keyboard,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+
+import { RootStackParamList } from "../navigations/NavigationType";
+import OnBoardingLayout from "../layouts/OnBoardingLayout";
 import Button from "../components/Button";
 import Gap from "../components/Gap";
 import TextField from "../components/TextField";
-import OnBoardingLayout from "../layouts/OnBoardingLayout";
-import { RootStackParamList } from "../navigations/NavigationType";
 
 const styles = StyleSheet.create({
   container: {
@@ -36,12 +38,12 @@ export default function LoginScreen() {
       const response = await new Promise((resolve, reject) => {
         setTimeout(() => {
           if (testInput === "admin" || password === "admin") {
-            resolve("success");
+            resolve(response);
           }
           reject("Password Salah");
         }, 1000);
       });
-      console.log(response);
+      await AsyncStorage.setItem("username", testInput);
       navigation.navigate("App");
     } catch (err) {
       console.log(err);

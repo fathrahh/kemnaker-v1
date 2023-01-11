@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TextProps } from "react-native";
-import colors, { ColorVariant } from "../constant/colors";
-import { TypographyVariant } from "../constant/font";
+import colors, { ColorVariant } from "../constants/colors";
+import { TypographyVariant } from "../constants/font";
 
 interface TypographyProps extends TextProps {
   variant?: TypographyVariant;

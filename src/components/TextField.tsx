@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, TextInput, TextInputProps, StyleSheet } from "react-native";
 import { EyeIconClose, EyeIconOpen } from "../assets/icons";
-import COLORS from "../constant/colors";
+import COLORS from "../constants/colors";
 
 interface TextFieldProps extends TextInputProps {}
 

@@ -7,8 +7,8 @@ import {
   ViewStyle,
 } from "react-native";
 
-import COLORS, { ColorVariant } from "../constant/colors";
-import { TypographyVariant } from "../constant/font";
+import COLORS, { ColorVariant } from "../constants/colors";
+import { TypographyVariant } from "../constants/font";
 import Typography from "./Typography";
 
 type ButtonVariant = "contained" | "outlined";

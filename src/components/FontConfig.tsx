@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useFonts } from "expo-font";
 import { View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
-import fonts from "../constant/font";
+import fonts from "../constants/font";
 SplashScreen.preventAutoHideAsync();
 
 interface IFontConfig {

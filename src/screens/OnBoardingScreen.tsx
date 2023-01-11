@@ -2,13 +2,13 @@ import { View, Dimensions } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 
-import { PresentationSvg } from "../assets/illustrations";
 import Button from "../components/Button";
 import Typography from "../components/Typography";
-import COLORS from "../constant/colors";
+import COLORS from "../constants/colors";
 import OnBoardingLayout from "../layouts/OnBoardingLayout";
 import { RootStackParamList } from "../navigations/NavigationType";
 import Dot from "../components/Dot";
+import { PresentationIllustration } from "../assets";
 
 const { width } = Dimensions.get("window");
 
@@ -34,7 +34,7 @@ export default function OnBoardingScreen() {
             alignItems: "center",
           }}
         >
-          <PresentationSvg />
+          <PresentationIllustration />
           <Typography
             style={{
               padding: 5,

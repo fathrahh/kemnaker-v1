@@ -5,7 +5,7 @@ import {
   View,
   Dimensions,
 } from "react-native";
-import COLORS from "../constant/colors";
+import COLORS from "../constants/colors";
 
 interface Props {
   children: React.ReactNode;

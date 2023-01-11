@@ -3,7 +3,7 @@ import Animated, {
   interpolate,
   useInterpolateConfig,
 } from "react-native-reanimated";
-import COLORS from "../constant/colors";
+import COLORS from "../constants/colors";
 
 const styles = StyleSheet.create({
   dot: {

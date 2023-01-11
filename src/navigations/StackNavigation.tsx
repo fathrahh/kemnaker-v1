@@ -7,6 +7,7 @@ import SplashScreen from "../screens/SplashScreen";
 import TestComponentScreen from "../screens/TestComponentScreen";
 import HomeScreen from "../screens/App/HomeScreen";
 import AppNavigation from "./TabNavigation";
+import CourseDetail from "../screens/App/CourseDetail";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -17,12 +18,13 @@ export default function Routes() {
         animation: "simple_push",
         headerShown: false,
       }}
-      initialRouteName="Login"
+      initialRouteName="App"
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="App" component={AppNavigation} />
+      <Stack.Screen name="CourseDetail" component={CourseDetail} />
       <Stack.Screen name="Component" component={TestComponentScreen} />
     </Stack.Navigator>
   );
