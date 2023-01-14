@@ -8,7 +8,7 @@ import SafeAreaStatusBar from "../../components/SafeAreaStatusBar";
 import COLORS from "../../constants/colors";
 import SearchBar from "../../components/SearchBar";
 // Assets
-import { FilterIcon, NotificationIcon } from "../../assets/icons";
+import Icon from "../../assets/icons";
 import JobsSection from "../../section/HomeScreen/JobsSection";
 import PopularCourses from "../../section/HomeScreen/PopularCourses";
 import PopularJobOffers from "../../section/HomeScreen/PopularJobOffers";
@@ -59,7 +59,7 @@ export default function HomeScreen() {
             }}
             onPress={() => {}}
           >
-            <NotificationIcon />
+            <Icon name="notification" />
           </Pressable>
         </View>
         <View style={[styles.container, styles.main]}>
@@ -73,7 +73,7 @@ export default function HomeScreen() {
               onPressSearch={() => Alert.alert(search)}
             />
             <Pressable style={styles.filter}>
-              <FilterIcon stroke={"#FFFFFF"} />
+              <Icon name="filter" color={"#FFFFFF"} />
             </Pressable>
           </View>
           <JobsSection />

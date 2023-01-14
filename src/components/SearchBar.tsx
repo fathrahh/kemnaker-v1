@@ -7,7 +7,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { SearchIcon } from "../assets/icons";
+import Icon from "../assets/icons";
 import COLORS from "../constants/colors";
 import fonts from "../constants/font";
 
@@ -34,7 +34,7 @@ export default function SearchBar({
         {...other}
       />
       <Pressable style={styles.icon} onPress={onPressSearch}>
-        <SearchIcon />
+        <Icon name="search" />
       </Pressable>
     </View>
   );

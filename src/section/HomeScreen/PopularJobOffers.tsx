@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { JobOfferImage } from "../../assets/illustrations";
-import TrainingCardPost from "./TrainingCardPost";
 import HomeCarouselLayout from "../../layouts/HomeCarouselLayout";
+import CardJobOffers from "./CardJobOffers";
 
 export default function PopularJobOffers() {
   return (
@@ -11,17 +11,24 @@ export default function PopularJobOffers() {
       }}
       title={"Lowongan Kerja Terpopuler"}
     >
-      {Array(8)
-        .fill(null)
-        .map((_, idx) => (
-          <View key={idx.toString() + "test"} style={{ marginRight: 10 }}>
-            <TrainingCardPost
-              imgSource={JobOfferImage}
-              title={"Belajar Desain Grafis Pemula"}
-              rating={idx}
-            />
-          </View>
-        ))}
+      <View style={{ marginRight: 10 }}>
+        <CardJobOffers
+          imgSource={JobOfferImage}
+          title={"Belajar Desain Grafis Pemula"}
+          author={"mang ucup"}
+          location={"Jakarta/Bandung/Semarang"}
+          salaryRange={[]}
+        />
+      </View>
+      <View style={{ marginRight: 10 }}>
+        <CardJobOffers
+          imgSource={JobOfferImage}
+          title={"Belajar Desain Grafis Pemula"}
+          author={"mang ucup"}
+          location={"Jakarta/Bandung/Semarang"}
+          salaryRange={[200, 400]}
+        />
+      </View>
     </HomeCarouselLayout>
   );
 }

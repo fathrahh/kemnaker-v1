@@ -1,6 +1,16 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, Dimensions, Pressable, StatusBar } from "react-native";
-import { HelpIcon, HistoryIcon, KemnakerIcon, UserIcon } from "../assets/icons";
+import { View, Dimensions, StatusBar } from "react-native";
+import Animated, {
+  Easing,
+  Extrapolate,
+  interpolate,
+  useAnimatedProps,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming,
+} from "react-native-reanimated";
+import Icon, { IconsKey } from "../assets/icons";
 import { AppButtonTabsParamList } from "./NavigationType";
 import {
   HelpScreen,
@@ -10,9 +20,32 @@ import {
 } from "../screens/App";
 import COLORS from "../constants/colors";
 
-const { width, height } = Dimensions.get("window");
+const screenDimension = Dimensions.get("screen");
+const windowDimension = Dimensions.get("window");
+
+const bottomNavigationPadding =
+  screenDimension.height - windowDimension.height - StatusBar.currentHeight;
+
+console.log(bottomNavigationPadding);
 
 const AppTab = createBottomTabNavigator<AppButtonTabsParamList>();
+
+type TabIconProps = {
+  focused?: boolean;
+  color?: string;
+  size?: number;
+  name: IconsKey;
+};
+
+const TabButtonIcon = ({ focused, name }: TabIconProps) => {
+  return (
+    <Icon
+      style={[{ width: 24, height: 24 }]}
+      color={focused && COLORS.primary.main}
+      name={name}
+    />
+  );
+};
 
 export default function AppNavigation() {
   return (
@@ -27,32 +60,18 @@ export default function AppNavigation() {
           width: 370,
           height: 70,
           elevation: 4,
-          left: width / 2,
-          top: height - 10 - StatusBar.currentHeight,
+          left: windowDimension.width / 2,
+          bottom:
+            screenDimension.height -
+            windowDimension.height -
+            StatusBar.currentHeight -
+            25,
           transform: [
             {
               translateX: -(370 / 2),
             },
           ],
         },
-        // tabBarButton: ({ children, ...other }) => {
-        //   return (
-        //     <Pressable
-        //       {...other}
-        //       style={[
-        //         {
-        //           borderWidth: 0,
-        //           margin: 10,
-        //           width: 50,
-        //           borderRadius: 50 / 2,
-        //           aspectRatio: 1,
-        //         },
-        //       ]}
-        //     >
-        //       {children}
-        //     </Pressable>
-        //   );
-        // },
         tabBarLabel: () => null,
         headerShown: false,
       }}
@@ -60,7 +79,9 @@ export default function AppNavigation() {
     >
       <AppTab.Screen
         options={{
-          tabBarIcon: ({ focused }) => <KemnakerIcon />,
+          tabBarIcon: ({ focused }) => (
+            <TabButtonIcon focused={focused} name="kemnaker" />
+          ),
         }}
         name="Home"
         component={HomeScreen}
@@ -68,12 +89,7 @@ export default function AppNavigation() {
       <AppTab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <HistoryIcon
-              style={{
-                ...(focused && { transform: [{ scale: 1.18 }] }),
-              }}
-              stroke={focused && COLORS.primary.main}
-            />
+            <TabButtonIcon focused={focused} name="history" />
           ),
         }}
         name="Riwayat"
@@ -82,7 +98,7 @@ export default function AppNavigation() {
       <AppTab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <HelpIcon stroke={focused && COLORS.primary.main} />
+            <TabButtonIcon focused={focused} name="help" />
           ),
         }}
         name="Bantuan"
@@ -90,7 +106,9 @@ export default function AppNavigation() {
       />
       <AppTab.Screen
         options={{
-          tabBarIcon: ({ focused }) => <UserIcon />,
+          tabBarIcon: ({ focused }) => (
+            <TabButtonIcon focused={focused} name="user" />
+          ),
         }}
         name="Profile"
         component={ProfileScreen}
