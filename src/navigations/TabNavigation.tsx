@@ -23,11 +23,6 @@ import COLORS from "../constants/colors";
 const screenDimension = Dimensions.get("screen");
 const windowDimension = Dimensions.get("window");
 
-const bottomNavigationPadding =
-  screenDimension.height - windowDimension.height - StatusBar.currentHeight;
-
-console.log(bottomNavigationPadding);
-
 const AppTab = createBottomTabNavigator<AppButtonTabsParamList>();
 
 type TabIconProps = {
@@ -73,7 +68,6 @@ export default function AppNavigation() {
           ],
         },
         tabBarLabel: () => null,
-        headerShown: false,
       }}
       initialRouteName="Home"
     >
@@ -82,37 +76,44 @@ export default function AppNavigation() {
           tabBarIcon: ({ focused }) => (
             <TabButtonIcon focused={focused} name="kemnaker" />
           ),
+          headerShown: false,
         }}
         name="Home"
         component={HomeScreen}
       />
-      <AppTab.Screen
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabButtonIcon focused={focused} name="history" />
-          ),
+      <AppTab.Group
+        screenOptions={{
+          headerShown: true,
         }}
-        name="Riwayat"
-        component={RiwayatScreen}
-      />
-      <AppTab.Screen
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabButtonIcon focused={focused} name="help" />
-          ),
-        }}
-        name="Bantuan"
-        component={HelpScreen}
-      />
-      <AppTab.Screen
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabButtonIcon focused={focused} name="user" />
-          ),
-        }}
-        name="Profile"
-        component={ProfileScreen}
-      />
+      >
+        <AppTab.Screen
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <TabButtonIcon focused={focused} name="history" />
+            ),
+          }}
+          name="Riwayat"
+          component={RiwayatScreen}
+        />
+        <AppTab.Screen
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <TabButtonIcon focused={focused} name="help" />
+            ),
+          }}
+          name="Bantuan"
+          component={HelpScreen}
+        />
+        <AppTab.Screen
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <TabButtonIcon focused={focused} name="user" />
+            ),
+          }}
+          name="Profile"
+          component={ProfileScreen}
+        />
+      </AppTab.Group>
     </AppTab.Navigator>
   );
 }

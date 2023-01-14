@@ -1,1 +1,1 @@
-export const kementrianLogo = require("./kementerian_logo.png");
+export { default as kementrianLogo } from "./kementerian_logo.png";

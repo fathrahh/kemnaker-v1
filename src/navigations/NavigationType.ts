@@ -4,6 +4,7 @@ export type RootStackParamList = {
   Login: undefined;
   App: undefined;
   Component: undefined;
+  Notification: undefined;
   AllCourse: undefined;
   AllJobOffer: undefined;
 };

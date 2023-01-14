@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { View, StyleSheet, Pressable, Alert, ScrollView } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 // Components
 import Typography from "../../components/Typography";
 import SafeAreaStatusBar from "../../components/SafeAreaStatusBar";
@@ -12,10 +13,15 @@ import Icon from "../../assets/icons";
 import JobsSection from "../../section/HomeScreen/JobsSection";
 import PopularCourses from "../../section/HomeScreen/PopularCourses";
 import PopularJobOffers from "../../section/HomeScreen/PopularJobOffers";
+import { RootStackParamList } from "../../navigations/NavigationType";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export default function HomeScreen() {
   const [userName, setUserName] = useState("");
   const [search, setSearch] = useState("");
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   const getUserName = async () => {
     const user = await AsyncStorage.getItem("username");
     setUserName(user);
@@ -57,7 +63,9 @@ export default function HomeScreen() {
               justifyContent: "center",
               alignItems: "center",
             }}
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate("Notification");
+            }}
           >
             <Icon name="notification" />
           </Pressable>
